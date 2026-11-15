@@ -21,8 +21,8 @@ Orkestr Functions 是**纯 handler 模式**：平台自己包了一个小 HTTP �
 
 ## 节点信息（新 UUID，不跟 serv00 / Cloady / 36 台复用）
 
-- UUID：`031c341d-cea7-4b4e-a2ab-3c207ba55e70`
-- WS 路径：`/031c341dcea74b4ea2ab3c207ba55e70-vl`
+- UUID：`<UUID>`
+- WS 路径：`/<UUID-无横线>-vl`
 - 前台：以前的博客小站“半山小记”（/、/posts/*、/about），错路径 400，错 UUID 断开
 - 协议：VLESS TCP + UDP（UDP 只在代码里，沙箱禁 UDP 出站所以没法完整验证），
   支持 Xray early data，TCP 空闲 120 秒断开，UDP 空闲 30 秒断开
@@ -38,14 +38,14 @@ Orkestr Functions 是**纯 handler 模式**：平台自己包了一个小 HTTP �
 3. Projects → New Project，选这个仓库，slug 自己起一个，
    比如 `node-blog`，地址就是 `node-blog.orkestr.run`。
 4. 环境变量里设（也可以不设，用文件里 baked 的默认值）：
-   - `UUID=031c341d-cea7-4b4e-a2ab-3c207ba55e70`
+   - `UUID=<UUID>`
    - `PORT` 由平台注入，代码会自己读，不用手动设
 5. 点 Deploy，等状态 Live，打开 `https://<slug>.orkestr.run/` 应该看到博客首页。
 
 客户端链接（把 `<slug>` 换成你自己的，host 填平台给的域名，TLS 由平台负责）：
 
 ```
-vless://031c341d-cea7-4b4e-a2ab-3c207ba55e70@<slug>.orkestr.run:443?encryption=none&security=tls&type=ws&host=<slug>.orkestr.run&path=%2F031c341dcea74b4ea2ab3c207ba55e70-vl#orkestr-node
+vless://<UUID>@<slug>.orkestr.run:443?encryption=none&security=tls&type=ws&host=<slug>.orkestr.run&path=%2F<UUID-无横线>-vl#orkestr-node
 ```
 
 ## 已知的坑
